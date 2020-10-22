@@ -1,0 +1,32 @@
+{
+  "name": "fletexscann",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "excel4node": "^1.7.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-mysql-session": "^2.1.4",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "express3-handlebars": "^0.5.2",
+    "fast-csv": "^4.3.2",
+    "file-saver": "^2.0.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "timeago.js": "^4.0.2",
+    "xlsx": "^0.16.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

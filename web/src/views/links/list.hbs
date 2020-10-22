@@ -1,0 +1,36 @@
+<div class="container p-5">
+    <div class="row">
+        <a class="btn btn-dark" href="/links/links{{Id}}">
+        exportar a excel
+        </a>
+         <table class="table">
+              <thead>
+                 <tr>
+                 <th scope="col">#</th>
+                 <th scope="col">Numero de Guia</th>
+                 <th scope="col">Alto</th>
+                 <th scope="col">Ancho</th>
+                 <th scope="col">Largo</th>
+                 <th scope="col">Peso</th>
+                 <th scope="col">Fecha</th>
+                </tr>
+             </thead>
+             <tbody id="respuesta">
+              {{#each guias}}
+               <tr>
+                 <td>{{Id}}</td>
+                 <td>{{NumeroGuia}}</td>
+                 <td>{{Alto}}</td>
+                 <td>{{Ancho}}</td>
+                 <td>{{Largo}}</td>
+                 <td>{{Peso}}</td>
+                 <td>{{Fecha}}</td>
+               </tr>
+              {{/each}}
+             </tbody>
+         </table>
+    </div>
+</div>
+<script>
+
+</script>
