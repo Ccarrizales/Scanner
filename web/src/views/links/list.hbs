@@ -1,12 +1,27 @@
 <div class="container p-5">
     <div class="row">
-        <a class="btn btn-dark" href="/links/links{{Id}}">
-        exportar a excel
-        </a>
+        <div class="row-cols-1">
+          <form>
+          <a class="btn btn-dark" href="/links/links{{Id}}">
+           exportar a excel
+            </a>
+            {{#each date1}}
+          <label for="datemax">Ingresar Fecha Inicio</label>
+          <input type="date" id="datemax{{date1}}" name="datemax" max="2000-12-31">
+          
+          <label for="datemin">Ingresar Fecha Final</label>
+          <input type="date" id="datemin{{date2}}" name="datemin" min="2000-01-02">
+         <a class="btn btn-dark" href="/links/{{}}">
+           ordenar
+            </a>
+          {{/each}}
+            </form>
+            </div>
          <table class="table">
               <thead>
                  <tr>
                  <th scope="col">#</th>
+                 <th scope="col">Cliente</th>
                  <th scope="col">Numero de Guia</th>
                  <th scope="col">Alto</th>
                  <th scope="col">Ancho</th>
@@ -19,6 +34,7 @@
               {{#each guias}}
                <tr>
                  <td>{{Id}}</td>
+                 <td></td>
                  <td>{{NumeroGuia}}</td>
                  <td>{{Alto}}</td>
                  <td>{{Ancho}}</td>
@@ -29,8 +45,16 @@
               {{/each}}
              </tbody>
          </table>
+         <ul class="pagination pagination-lg" id="dep_page"></ul>
     </div>
 </div>
 <script>
-
+$(document).ready(function(){
+  $('#respuestas').pageMe({
+    pagerSelector:'dep_page',
+    showPrevNext:true,
+    hidePageNumbers:false,
+    perPage:10
+  });
+})
 </script>

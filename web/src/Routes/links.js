@@ -8,6 +8,7 @@ const filesaver=require('file-saver');
 const { Result } = require('express-validator');
 const { constants } = require('buffer');
 
+
 module.exports=router;
 router.get('/add',(req,res)=>{
     res.render('links/add');
@@ -55,6 +56,25 @@ router.get('/get',async(req,rest)=>{
     });
 
 });
+//fechas
+router.get('/links', async(req,rest)=>{
+    const {date1}=Date.parse("Y-m-d")
+    const {date2}=Date.parse("y-m-d")
+   
+    var query='SELECT * FROM `tbl_paquetes` WHERE `Fecha` BETWEEN Fecha=? AND fecha=?'
+   const consultafechas=await pool.query(query,[date1,date2],(err,rows,field)=>{
+        console.log(consultafechas)
+        if(!err){
+            rest.json(rows);
+            rest.render("links/",{consultafechas})
+        }else{
+            console.log(err);
+        }
+    });
+
+});
+//paginacion
+
 
 router.post('/post',async(req,rest)=>{
 
