@@ -7,6 +7,7 @@ const ws=fs.createWriteStream("FletexScann.csv");
 const filesaver=require('file-saver');
 const { Result } = require('express-validator');
 const { constants } = require('buffer');
+const moment=require('moment');
 
 
 module.exports=router;
@@ -14,9 +15,7 @@ router.get('/add',(req,res)=>{
     res.render('links/add');
    });
 
-router.post('/add',(req, res)=>{
-    res.send('recevide');
-});
+
 
 router.get('/',async(req,rest)=>{
     const guias=await pool.query('SELECT Id,NumeroGuia,Alto,Ancho,Largo,Peso,Fecha FROM tbl_paquetes');
@@ -60,21 +59,14 @@ router.get('/get',async(req,rest)=>{
 router.get('/links', async(req,rest)=>{
     const {date1}=Date.parse("Y-m-d")
     const {date2}=Date.parse("y-m-d")
-   
+    console.log(date1)
+    console.log(date2)
     var query='SELECT * FROM `tbl_paquetes` WHERE `Fecha` BETWEEN Fecha=? AND fecha=?'
-   const consultafechas=await pool.query(query,[date1,date2],(err,rows,field)=>{
-        console.log(consultafechas)
-        if(!err){
-            rest.json(rows);
-            rest.render("links/",{consultafechas})
-        }else{
-            console.log(err);
-        }
-    });
+   var cconsultas=await pool.query(query,[date1,date2]);
+   console.render('/links/',{cconsultas});
 
-});
 //paginacion
-
+});
 
 router.post('/post',async(req,rest)=>{
 
@@ -95,4 +87,20 @@ router.post('/post',async(req,rest)=>{
        }
        });
        
+});
+
+router.post('/add',async(req,rest)=>{
+
+    const {id,nombrecliente,direccion,estado,ciudad}=req.body;
+    const agregardatos={
+        id,
+        nombrecliente,
+        direccion,
+        estado,
+        ciudad
+    }
+    console.log(agregardatos)
+    
+    await pool.query('INSERT INTO tbl_clientes SET ?',[agregardatos]);
+    rest.redirect('links/add')
 });

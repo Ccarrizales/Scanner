@@ -1,20 +1,20 @@
 <div class="container p-5">
     <div class="row">
         <div class="row-cols-1">
-          <form>
+          <form action="" method="POST">
           <a class="btn btn-dark" href="/links/links{{Id}}">
            exportar a excel
             </a>
-            {{#each date1}}
+          
           <label for="datemax">Ingresar Fecha Inicio</label>
-          <input type="date" id="datemax{{date1}}" name="datemax" max="2000-12-31">
+          <input type="date" id="datemax" name="datemax" max=date>
           
           <label for="datemin">Ingresar Fecha Final</label>
-          <input type="date" id="datemin{{date2}}" name="datemin" min="2000-01-02">
-         <a class="btn btn-dark" href="/links/{{}}">
+          <input type="date" id="datemin" name="datemin" min="2000-01-02">
+         <a class="btn btn-dark" href="/links/{{cconsultas}}">
            ordenar
             </a>
-          {{/each}}
+           
             </form>
             </div>
          <table class="table">
@@ -41,6 +41,7 @@
                  <td>{{Largo}}</td>
                  <td>{{Peso}}</td>
                  <td>{{Fecha}}</td>
+                 
                </tr>
               {{/each}}
              </tbody>
